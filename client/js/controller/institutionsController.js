@@ -1,20 +1,36 @@
-angular.module("institutionsApp").controller("institutionsController", ["$scope", "$http", "institutions", function ($scope, $http, institutions){
+angular.module('institutions').controller("institutionsController", ["$scope", "$http", "$route", "institutions", function ($scope, $http, $route, institutions){
     
     const init = function () {
+        $scope.editMode = false;
         $scope.institutions = institutions.data;
     };
     
-    $scope.addInstitution = function(institution) {
+    $scope.saveInstitution = function (institution) {
         if (!institution) return;
-        console.log(institution);
-        $http.post(`institutions`, institution).then(function (response) {
-            console.log('response: ' + response);
-        }, function (error){
-            console.log(error);
-        });
-        $scope.institutions.push(angular.copy(institution));
-        delete $scope.institution;
+        if (institution.idInstitution) {
+            $http.put(`institutions/${$scope.institution.idInstitution}`, institution).then(function (response) {
+                $route.reload();
+            }, function (error){
+            });
+        } else {
+            $http.post(`institutions`, institution).then(function (response) {
+                $route.reload();
+            }, function (error){
+            });
+        }
     };
+
+    $scope.deleteInstitution = function (institution) {
+        $http.delete(`institutions/${institution.idInstitution}`).then(function (response) {
+            $route.reload();
+        }, function (error){
+        });
+    };
+
+    $scope.editInstitution = function (institution) {
+        $scope.editMode = true;
+        $scope.institution = angular.copy(institution);
+    }
 
     init();
 }]);

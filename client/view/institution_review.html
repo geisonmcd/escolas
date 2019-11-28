@@ -1,0 +1,30 @@
+<div class="container jumbotron" style="width:800px; margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>{{institution.name}}</h2>
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        <div class="form-group">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <label>Grade</label>
+                    <input class="form-control" type="number" ng-model="institution.review.grade" autofocus>
+                </div>
+            </div>
+            <div class="row mt-2 d-flex justify-content-center">
+                <div class="col-md-8">
+                    <label>Opinion</label>
+                    <textarea class="form-control" ng-model="institution.review.opinion" rows="5"  name="description"> </textarea> 
+                </div>
+            </div>
+            <br />
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <button class="btn btn-primary form-control" ng-click="saveReview(institution.review)">Save Review</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,28 +1,61 @@
-<div class="jumbotron">
-    <div class="">
-        <div class="col text-center">
+<div class="container jumbotron" style="width:800px; margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12 text-center">
             <h2>Institutions</h2>
         </div>
     </div>
     <br/>
-    <div class="row">
-        <div class="col">
-            <input class="form-control" type="text" ng-model="institution.name" ng-keyup="$event.keyCode == 13 ? addInstitution(institution) : null" autofocus>
-        </div>
-        <div class="col">
-            <button class="btn btn-primary" ng-click="addInstitution(institution)">Add institution</button>
+    <div class="container">
+        <div class="form-group">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <label>Name</label>
+                    <input class="form-control" type="text" ng-model="institution.name" ng-keyup="$event.keyCode == 13 ? addInstitution(institution) : null" autofocus>
+                </div>
+            </div>
+            <br/>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <button class="btn btn-primary form-control" ng-click="saveInstitution(institution)">
+                        <span ng-if="!editMode">Add institution</span>
+                        <span ng-if="editMode">Edit institution</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    <br/>
+    <hr/>
     <div class="row">
         <div class="col">
-            <table class="table table-striped">
-                <th>Institutions</th>
-                <tr ng-repeat="institution in institutions">
-                    <td>{{institution.name}}</td>
-                </tr>
+            <table class="table table-striped table-hover">
+                <thead >
+                    <th>Institutions</th>
+                    <th style="width:200px">
+                        <div class="d-flex justify-content-around">
+                            <span>Edit</span>
+                            <span>Review</span>
+                            <span>Delete</span>
+                        </div>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="institution in institutions">
+                        <td style="display: table-cell; vertical-align:middle" ><span>{{institution.name}}</span></td>
+                        <td class="d-flex justify-content-around">
+                            <button class="btn btn-primary" ng-click="editInstitution(institution)">
+                                <i class="fa fa-edit fa-lg"></i> 
+                            </button>
+                            <a class="btn btn-warning" href="#!/institutions/{{institution.idInstitution}}">
+                                <i class="fa fa-link fa-lg"></i> 
+                            </a>
+                            <button class="btn btn-danger" ng-click="deleteInstitution(institution)">
+                                <i class="fa fa-trash fa-lg"></i> 
+                            </button>
+                        </td>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
-    </div>
     </div>
 </div>

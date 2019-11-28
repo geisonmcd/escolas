@@ -1,14 +1,40 @@
 <!DOCTYPE html>
-<html ng-app="institutionsApp">
-    <head>
-        <script src="/node_modules/angular/angular.js"></script>
-        <script src ="node_modules/angular-route/angular-route.min.js"></script>
-        <script src="js/route/routeConfig.js"></script>
-        <script src="js/controller/institutionsController.js"></script>
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/institutions.css">
-    </head>
-    <body>
-        <div ng-view></div>
-    </body>
+<html ng-app="institutions">
+<head>
+	<title translate>Institutions</title>
+	<link href="img/favicon.png" type="image/png" rel="icon">
+	<!-- css:css -->
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="node_modules/angular-veasy-toastr/dist/css/veasy-toastr.min.css">
+	<link rel="stylesheet" href="css/institutions.css">
+	<!-- endinject -->
+	<!-- lib:js -->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/components-jqueryui/jquery-ui.min.js"></script>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+	<script src="node_modules/angular-route/angular-route.min.js"></script>
+	<script src="node_modules/angular-i18n/angular-locale_pt-br.js"></script>
+	<script src="node_modules/angular-translate/dist/angular-translate.min.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.min.js"></script>
+	<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+	<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/angular-veasy-toastr/dist/js/veasy-toastr-tpls.min.js"></script>
+	<script src="node_modules/angular-veasy-toastr/dist/js/veasy-toastr.min.js"></script>
+	<script src="node_modules/angular-ui-sortable/dist/sortable.min.js"></script>
+	<!-- endinject -->
+	<!-- js:js -->
+	<script src="js/app.js"></script>
+	<script src="js/config/routeConfig.js"></script>
+	<script src="js/controller/institutionReviewController.js"></script>
+	<script src="js/controller/institutionReviewModalController.js"></script>
+	<script src="js/controller/institutionsController.js"></script>
+	<!-- endinject -->
+</head>
+<body>
+	<veasy-toastr></veasy-toastr>
+	<div ng-view></div>
+</body>
 </html>
