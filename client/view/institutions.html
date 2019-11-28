@@ -1,0 +1,28 @@
+<div class="jumbotron">
+    <div class="">
+        <div class="col text-center">
+            <h2>Institutions</h2>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col">
+            <input class="form-control" type="text" ng-model="institution.name" ng-keyup="$event.keyCode == 13 ? addInstitution(institution) : null" autofocus>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" ng-click="addInstitution(institution)">Add institution</button>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <th>Institutions</th>
+                <tr ng-repeat="institution in institutions">
+                    <td>{{institution.name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
