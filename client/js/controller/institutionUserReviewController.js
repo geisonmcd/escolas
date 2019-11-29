@@ -1,17 +1,15 @@
-angular.module("institutions").controller("institutionUserReviewController", ["$scope", "$http", "$route", "institution", function ($scope, $http, $route, institution){
+angular.module("institutions").controller("institutionUserReviewController", ["$scope", "$http", "$route", "review", function ($scope, $http, $route, review){
     
     const init = function () {
-        $scope.institution = institution.data;
+        $scope.review = review.data;
     };
 
     $scope.saveReview = function (review) {
         if (review.idReview) {
-            $http.put(`institutions/${$scope.institution.idInstitution}/users/${1}/review/${review.idReview}`, review).then(function (response) {
-                // console.log(success);
+            $http.put(`institutions/${$scope.review.idInstitution}/users/${1}/reviews/${review.idReview}`, review).then(function (response) {
             }); 
         } else {
-            $http.post(`institutions/${$scope.institution.idInstitution}/users/${1}/review/`, review).then(function (response) {
-                // console.log(success);
+            $http.post(`institutions/${$route.current.params.idInstitution}/users/${1}/reviews/`, review).then(function (response) {
             });
         }
     };  

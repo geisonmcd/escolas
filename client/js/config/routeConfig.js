@@ -16,8 +16,8 @@ angular.module("institutions", ['ngRoute']).config(['$routeProvider', function($
         templateUrl: "view/institution_user_review.html",
         controller: "institutionUserReviewController",
         resolve: {
-            institution: ["$route", "$http", function ($route, $http) {
-                return $http.get(`/institutions/${$route.current.params.idInstitution}/users/${1}/review`);
+            review: ["$route", "$http", function ($route, $http) {
+                return $http.get(`/institutions/${$route.current.params.idInstitution}/users/${1}/reviews`);
             }]
         }
     });   

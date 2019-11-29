@@ -17,5 +17,6 @@ app.options('*', function (req, res, next) {
 });
 
 app.use('/institutions', require('routes/institutionsRoute'));
+app.use('/institutions/:idInstitution/users/:idUser/reviews', require('routes/institutionsUsersReviewsRoute'));
 
 module.exports = app;
