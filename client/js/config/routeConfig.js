@@ -1,6 +1,6 @@
 angular.module("institutions", ['ngRoute']).config(['$routeProvider', function($routeProvider){
    
-    $routeProvider.when('/', {
+    $routeProvider.when('/institutions', {
         name: "institutions",
         templateUrl: "view/institutions.html",
         controller: "institutionsController",
@@ -20,6 +20,8 @@ angular.module("institutions", ['ngRoute']).config(['$routeProvider', function($
                 return $http.get(`/institutions/${$route.current.params.idInstitution}/users/${1}/reviews`);
             }]
         }
-    });   
+    });
+    
+    $routeProvider.otherwise({ redirectTo: "/institutions" });
     
 }]);

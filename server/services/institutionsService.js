@@ -12,7 +12,9 @@ const getInstitutions = function () {
     return database.query(`select * from institution`);    
 };
 
-const deleteInstitution = function (idInstitution) {
+const deleteInstitution = async function (idInstitution) {
+    const review = await database.oneOrNone(`select * from review where id_institution = $1`, [idInstitution]);
+    if (review) await database.none('delete from review where id_review = $1', [review.idReview]);
     database.none(`delete from institution where id_institution = $1`, [idInstitution]);
 };
 
