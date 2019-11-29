@@ -1,15 +1,8 @@
 const gulp = require("gulp");
 const inject = require("gulp-inject");
-const uglify = require("gulp-uglifyjs");
-const concat = require("gulp-concat");
 const rename = require("gulp-rename");
-const html2js = require("gulp-ng-html2js");
-const htmlmin = require("gulp-htmlmin");
 const del = require("del");
-const streamqueue = require("streamqueue");
 const runSequence = require("run-sequence");
-const babel = require("gulp-babel");
-const sourcemaps = require("gulp-sourcemaps");
 
 const css = [
     "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -77,66 +70,6 @@ gulp.task("inject", function () {
 
 gulp.task("cleanAll", function (cb) {
     return del(["dist/"], cb);
-});
-
-gulp.task("babel", function () {
-    return gulp.src(["js/**/*.js"])
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ["env"],
-            plugins: [
-                "babel-plugin-transform-object-rest-spread",
-            ]
-        }))
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("dist/babel/js"));
-});
-
-gulp.task("uglify", function () {
-    return streamqueue(
-        { objectMode: true },
-        gulp.src(libs),
-        gulp.src("dist/babel/js/**/*.js").pipe(uglify())
-    )
-        .pipe(concat("institutions.min.js"))
-        .pipe(gulp.dest("dist/js"));
-});
-
-gulp.task("css", function () {
-    gulp.src(css)
-        .pipe(concat("institutions.css"))
-        .pipe(gulp.dest("dist/css/"));
-});
-
-gulp.task("copy", function () {
-    gulp.src(["node_modules/font-awesome/fonts/**/*", "node_modules/bootstrap/fonts/**/*"])
-        .pipe(gulp.dest("dist/fonts/"));
-    gulp.src(["node_modules/material-design-icons/iconfont/**/*"])
-        .pipe(gulp.dest("dist/css/"));
-    gulp.src("img/**/*")
-        .pipe(gulp.dest("dist/img/"));
-    gulp.src("font/**/*")
-        .pipe(gulp.dest("dist/font/"));
-    gulp.src("index-prod.html")
-        .pipe(rename("index.html"))
-        .pipe(gulp.dest("dist/"));
-});
-
-gulp.task("html2js", function () {
-    gulp.src("view/*.html")
-        .pipe(htmlmin({ collapseWhitespace: false }))
-        .pipe(html2js({
-            moduleName: "institutions",
-            declareModule: false,
-            prefix: "view/"
-        }))
-        .pipe(uglify())
-        .pipe(concat("view.min.js"))
-        .pipe(gulp.dest("dist/js"));
-});
-
-gulp.task("cleanBabel", function (cb) {
-    return del(["dist/babel"], cb);
 });
 
 gulp.task("prod", function () {
