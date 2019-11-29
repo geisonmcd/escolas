@@ -1,4 +1,4 @@
-angular.module("institutions").controller("institutionReviewController", ["$scope", "$http", "$route", "institution", function ($scope, $http, $route, institution){
+angular.module("institutions").controller("institutionUserReviewController", ["$scope", "$http", "$route", "institution", function ($scope, $http, $route, institution){
     
     const init = function () {
         $scope.institution = institution.data;

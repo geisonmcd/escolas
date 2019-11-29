@@ -11,10 +11,10 @@ angular.module("institutions", ['ngRoute']).config(['$routeProvider', function($
         }
     });   
 
-    $routeProvider.when('/institutions/:idInstitution', {
+    $routeProvider.when('/institutions/:idInstitution/users/:idUser/review', {
         name: "institutionsReview",
-        templateUrl: "view/institution_review.html",
-        controller: "institutionReviewController",
+        templateUrl: "view/institution_user_review.html",
+        controller: "institutionUserReviewController",
         resolve: {
             institution: ["$route", "$http", function ($route, $http) {
                 return $http.get(`/institutions/${$route.current.params.idInstitution}/users/${1}/review`);
