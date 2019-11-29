@@ -28,9 +28,16 @@
                 </div>
             </div>
             <br />
-            <div class="row d-flex justify-content-center">
+            <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-md-8">
                     <button class="btn btn-primary form-control" ng-click="saveReview(review)">Save Review</button>
+                </div>
+            </div>
+            <div class="row mt-2 d-flex justify-content-center">
+                <div class="col-md-8">
+                    <div ng-show="saved" class="alert alert-primary" role="alert">
+                        Saved!
+                    </div>
                 </div>
             </div>
         </div>
