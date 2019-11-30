@@ -1,22 +1,20 @@
-angular.module("institutions").controller("institutionUserReviewController", ["$scope", "$http", "$route", "review", function ($scope, $http, $route, review){
+angular.module("institutions").controller("institutionUserReviewController", ["$scope", "api", "$route", "review", function ($scope, api, $route, review){
     
     const init = function () {
+        console.log(review);
         $scope.review = review.data;
     };
 
     $scope.saveReview = function (review) {
         if (review.idReview) {
-            $http.put(`institutions/${$scope.review.idInstitution}/users/${1}/reviews/${review.idReview}`, review).then(function (response) {
-                saveSuccess();
-            }); 
+            api.institutions.users.reviews.put($scope.review.idInstitution, 1, review.idReview, review).then(saveSuccess);
         } else {
-            $http.post(`institutions/${$route.current.params.idInstitution}/users/${1}/reviews/`, review).then(function (response) {
-                saveSuccess();
-            });
+            api.institutions.users.reviews.post($route.current.params.idInstitution, 1, review).then(saveSuccess());
         }
     };  
 
     const saveSuccess = function () {
+        console.log('saveSuccess');
         $scope.saved = true;
         setTimeout(function () {
             $route.reload();

@@ -1,4 +1,4 @@
-angular.module('institutions').controller("institutionsController", ["$scope", "$http", "$route", "institutions", function ($scope, $http, $route, institutions){
+angular.module('institutions').controller("institutionsController", ["$scope", "$route", "institutions", "api",  function ($scope, $route, institutions, api){
     
     const init = function () {
         $scope.editMode = false;
@@ -8,20 +8,18 @@ angular.module('institutions').controller("institutionsController", ["$scope", "
     $scope.saveInstitution = function (institution) {
         if (!institution) return;
         if (institution.idInstitution) {
-            $http.put(`institutions/${$scope.institution.idInstitution}`, institution).then(function (response) {
+            api.institutions.put($scope.institution.idInstitution, institution).then(function (response) {
                 $route.reload();
-            }, function (error){
             });
         } else {
-            $http.post(`institutions`, institution).then(function (response) {
+            api.institutions.post(institution).then(function (response) {
                 $route.reload();
-            }, function (error){
             });
         }
     };
 
     $scope.deleteInstitution = function (institution) {
-        $http.delete(`institutions/${institution.idInstitution}`).then(function (response) {
+        api.institutions.delete(institution.idInstitution).then(function (response) {
             $route.reload();
         }, function (error){
         });

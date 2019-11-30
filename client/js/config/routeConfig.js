@@ -5,8 +5,8 @@ angular.module("institutions", ['ngRoute']).config(['$routeProvider', function($
         templateUrl: "view/institutions.html",
         controller: "institutionsController",
         resolve: {
-            institutions: ["$http", function ($http) {
-                return $http.get("/institutions");
+            institutions: ["api", function (api) {
+                return api.institutions.list();
             }]
         }
     });   
@@ -16,8 +16,10 @@ angular.module("institutions", ['ngRoute']).config(['$routeProvider', function($
         templateUrl: "view/institution_user_review.html",
         controller: "institutionUserReviewController",
         resolve: {
-            review: ["$route", "$http", function ($route, $http) {
-                return $http.get(`/institutions/${$route.current.params.idInstitution}/users/${1}/reviews`);
+            review: ["$route", "api", function ($route, api) {
+                var algo = api.institutions.users.reviews.get($route.current.params.idInstitution, 1);
+                console.log(api.institutions.users.reviews);
+                return algo ;
             }]
         }
     });
