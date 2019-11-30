@@ -1,0 +1,45 @@
+<div class="container jumbotron" style="width:800px; margin-top: 20px">
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn btn-default" href="#">
+                    <i class="fa fa-chevron-left fa-lg"></i> <span>Back</span>
+            </a>        
+        </div>
+        <div class="col-md-8 text-center">
+            <h2>Review</h2>
+            <h2>{{review.institution.name}}</h2>
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        <div class="form-group">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <label>Grade</label>
+                    <input class="form-control" type="number" min="0" ng-model="review.grade"
+                        autofocus>
+                </div>
+            </div>
+            <div class="row mt-2 d-flex justify-content-center">
+                <div class="col-md-8">
+                    <label>Opinion</label>
+                    <textarea class="form-control" placeholder="Leave your opinion about this institution here"
+                        ng-model="review.opinion" rows="5" name="description"> </textarea>
+                </div>
+            </div>
+            <br />
+            <div class="row mt-2 d-flex justify-content-center">
+                <div class="col-md-8">
+                    <button class="btn btn-primary form-control" ng-click="saveReview(review)">Save Review</button>
+                </div>
+            </div>
+            <div class="row mt-2 d-flex justify-content-center">
+                <div class="col-md-8">
+                    <div ng-show="saved" class="alert alert-primary" role="alert">
+                        Saved!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
