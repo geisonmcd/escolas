@@ -1,4 +1,10 @@
 # Institutions
+O projeto está em nodejs 8 e angularjs 1.x com banco de dados postgres 10.
+
+Infelizmente não conseguin atender a todos os requisitos e ficou bem simples, mas foi o que consegui fazer nesses últimos dias.
+Não trabalho com docker ainda e não tive tempo de pesquisar então a aplicação não está 'dockerizada'.
+
+#Instruções
 
 Clone o projeto
 Atere os valores no arquivo config.js para se conectar ao seu banco
@@ -34,5 +40,5 @@ create table review (
 insert into app_user values (1, 'geison machado', '123456');
 
 Rode instal.sh na pasta root do projeto para instalar os packages do npm
-Rode run.sh na pasta root do projeto
+Rode run.sh na pasta root do projeto para rodas as tasks do gulp e iniciar o servidor
 Acesse na porta 5000
