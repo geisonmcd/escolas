@@ -1,7 +1,6 @@
 angular.module("institutions").controller("institutionUserReviewController", ["$scope", "api", "$route", "review", function ($scope, api, $route, review){
     
     const init = function () {
-        console.log(review);
         $scope.review = review.data;
     };
 
@@ -14,7 +13,6 @@ angular.module("institutions").controller("institutionUserReviewController", ["$
     };  
 
     const saveSuccess = function () {
-        console.log('saveSuccess');
         $scope.saved = true;
         setTimeout(function () {
             $route.reload();

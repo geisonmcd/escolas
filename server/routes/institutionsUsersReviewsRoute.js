@@ -5,7 +5,6 @@ const reviewsService = require('services/reviewsService');
 router.get('/', async function (req, res) {
     const idInstitution = req.params.idInstitution;
     const idUser = req.params.idUser;
-    console.log(idInstitution, idUser);
     const review = await reviewsService.getReviewByIdInstitutionAndIdUser(idInstitution, idUser);
     res.json(review);
 });
@@ -21,7 +20,6 @@ router.post('/', async function (req, res) {
 router.put('/:idReview', async function (req, res) {
     const idReview = req.params.idReview;
     const review = req.body;
-    console.log({idReview, review});
     await reviewsService.updateReview(idReview, review);
     res.end();
 });

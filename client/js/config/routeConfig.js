@@ -17,9 +17,7 @@ angular.module("institutions", ['ngRoute']).config(['$routeProvider', function($
         controller: "institutionUserReviewController",
         resolve: {
             review: ["$route", "api", function ($route, api) {
-                var algo = api.institutions.users.reviews.get($route.current.params.idInstitution, 1);
-                console.log(api.institutions.users.reviews);
-                return algo ;
+                return api.institutions.users.reviews.get($route.current.params.idInstitution, 1);
             }]
         }
     });
