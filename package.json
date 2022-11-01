@@ -7,7 +7,7 @@
     "caseparser": "^1.0.2",
     "express": "4.16.3",
     "express-async-errors": "3.0.0",
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "lodash": "4.17.4",
     "pg-promise": "8.4.5",
     "request": "2.83.0"
@@ -38,7 +38,7 @@
     "gulp-rename": "1.2.2",
     "gulp-sourcemaps": "1.12.1",
     "gulp-uglifyjs": "0.6.2",
-    "mocha": "2.4.5",
+    "mocha": "10.1.0",
     "ng-html2js": "3.0.0",
     "nyc": "11.4.1",
     "run-sequence": "1.1.2",
